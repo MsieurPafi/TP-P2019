@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}WSF{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" />
+        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <section class="container">
+            <nav class="menu"> <!-- MENU -->
+                <a href="{{ path('subject_index') }}"><img src="{{ asset('logo.jpg') }}" alt="logo" class="logo"></a>
+                <ul>
+                    <li><a href="{{ path('subject_index') }}">Questions</a></li>
+                    <li><a href="{{ path('subject_create') }}">Ask a question</a></li>
+                    <li><a href="{{ path('subject_index_r') }}">Resolved questions</a></li>
+                </ul>
+            </nav>
+            <main> <!-- BODY -->
+                <h2>{{ block('title') }}</h2>
+                <section>
+                    {% block body %}{% endblock %}
+                </section>
+                <section>
+                    {% block replies %}{% endblock %}
+                </section>
+            </main>
+        </section>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

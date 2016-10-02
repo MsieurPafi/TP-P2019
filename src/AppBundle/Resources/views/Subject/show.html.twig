@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Question :: {{ subject.title }}
+{% endblock %}
+{% block body %}
+    <article class="card card-block question">
+        <div class="sideButtons">
+            <p class="upVote"><a href="{{ path('voteUp', {id:subject.id}) }}">⌃</a></p>
+            <p>{{ subject.vote }}</p>
+            <p class="downVote"><a href="{{ path('voteDown', {id:subject.id}) }}">⌄</a></p>
+        </div>
+        <div>
+            <h3 class="card-title">{{ subject.title }}</h3>
+            <section class="card-text">{{ subject.description }}</section>
+            <span class="card-text">
+                <small class="text-muted">
+                    {{ subject.updatedAt|localizeddate }}
+                </small>
+            </span>
+            {% if subject.resolved != TRUE %}
+                <p><a href="{{ path('resolve', {id:subject.id}) }}">Make this subject resolved</a></p>
+            {% endif %}
+            <a href="{{ path('deleteSubject', {id:subject.id}) }}">Supprimer</a>
+        </div>
+    </article>
+    <form  class="formVote" action="{{ path('subject_single', {id:subject.id}) }}" method="POST" ><!-- UNCOMMENT IF YOU WANT TO TEST THE FORM novalidate="novalidate" -->
+        {{ form_widget(form) }}
+        <button type="submit">Leave a reply</button>
+    </form>
+{% endblock %}
+
+{% block replies %}
+    {% for reply in subject.replies %}
+        <article class="card card-block {% if reply.vote < 0 %} greyed {% endif %} reply">
+            <div class="sideButtons">
+                <p class="upVote"><a href="{{ path('voteUpReply', {id:reply.id}) }}">⌃</a></p>
+                <p>{{ reply.vote }}</p>
+                <p class="downVote"><a href="{{ path('voteDownReply', {id:reply.id}) }}">⌄</a></p>
+            </div>
+            <div>
+                <h3 class="card-title">{{ reply.author }} <span>{{ reply.email }}</span></h3>
+                <section class="card-text">{{ reply.replyText }}</section>
+                <a href="{{ path('deleteReply', {id:reply.id}) }}">Supprimer</a>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Questions' %}
+
+{% block body %}
+    {% for subject in subjects %}
+
+        <article class="card card-block {% if subject.vote < 0 %} greyed {% endif %}">
+            <div class="sideButtons">
+                <p class="upVote"><a href="{{ path('voteUp', {id:subject.id}) }}">⌃</a></p>
+                <p>{{ subject.vote }}</p>
+                <p class="downVote"><a href="{{ path('voteDown', {id:subject.id}) }}">⌄</a></p>
+            </div>
+            <div>
+                <h3 class="card-title">{{ subject.title }}</h3>
+                <section class="card-text">{{ subject.description }}</section>
+                <span class="card-text">
+                    <small class="text-muted">
+                        {{ subject.updatedAt|localizeddate }}
+                    </small>
+                    <a href="{{ path('subject_single', {id:subject.id}) }}">
+                        <p>More...</p>
+                    </a>
+                    <a href="{{ path('resolve', {id:subject.id}) }}">Make this subject resolved</a>
+                </span>
+            </div>
+
+        </article>
+
+
+    {% endfor %}
+{% endblock %}

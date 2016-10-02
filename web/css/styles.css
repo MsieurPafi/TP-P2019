@@ -1,0 +1,81 @@
+
+
+/*************************** HEADER ****************************/
+.logo{
+    width:250px;
+    height:auto;
+}
+
+nav{
+    padding-bottom: 50px;
+}
+
+.menu li{
+    display: inline-block;
+    position: relative;
+    top: 32px;
+}
+.menu ul{
+    display: inline;
+    position: absolute;
+}
+/* allow the dev to add element menu (and have the pipe at the end) without editing the CSS */
+.menu li::after {
+    content: " | ";
+}
+.menu li:last-child::after{
+    content: "";
+}
+/***************************** BODY *****************************/
+
+.greyed{
+    color:#777777;
+}
+
+.formVote{
+    padding-bottom: 50px;
+}
+
+/**************************** VOTE SYSTEM ***************************/
+.sideButtons, .sideButton{
+    float: left;
+    margin-top: 20px;
+}
+.sideButtons p,.sideButton p{
+    border: 1px solid grey;
+    height: 40px;
+    width: 40px;
+    margin-top: -10px;
+    padding-top: 7px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.sideButtons p a:hover, .sideButtons p a:focus{
+    text-decoration: none;
+}
+
+.sideButtons p:first-child{
+    border-radius: 5px 5px 0px 0px;
+}
+
+.sideButtons p:last-child{
+    border-radius: 0px 0px 5px 5px;
+}
+
+.upVote{
+    font-size: 1.5em;
+}
+.downVote{
+    font-size: 1.5em;
+    padding-top: 0px!important;
+}
+
+
+
+.question{
+    min-height: 200px;
+}
+.reply{
+    min-height: 200px;
+}

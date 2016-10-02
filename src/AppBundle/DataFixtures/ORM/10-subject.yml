@@ -1,0 +1,21 @@
+'AppBundle\Entity\Subject':
+    subject_{1..25}:
+        title: '<sentence()>'
+        description: '<sentences(3, true)>'
+        resolved: true
+        vote: '<randomDigit()>'
+        updatedAt: '<dateTimeThisYear()>'
+    subject_{26..50}:
+        title: '<sentence()>'
+        description: '<sentences(3, true)>'
+        resolved: false
+        vote: 0
+        updatedAt: '<dateTimeThisYear()>'
+'AppBundle\Entity\Reply':
+    reply_{1..500}:
+        subject: '@subject_*'
+        replyText: '<sentences(5, true)>'
+        author: '<word(3, true)>'
+        email: '<email(3, true)>'
+        vote: 0
+

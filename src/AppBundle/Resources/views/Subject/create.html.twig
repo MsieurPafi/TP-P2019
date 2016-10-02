@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Ask a question' %}
+
+{% block body %}
+    <form action="{{ path('subject_create') }}" method="POST"> <!-- UNCOMMENT IF YOU WANT TO TEST THE FORM novalidate="novalidate" -->
+    {{ form_widget(subjectCreateForm) }}
+    <button type="submit">Ask</button>
+    </form>
+{% endblock %}
