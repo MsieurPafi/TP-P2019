@@ -1,4 +1,5 @@
-wsf-base
+Web School Overflow
 ========
 
-A Symfony project created on September 18, 2016, 11:13 am.
+A Symfony project delivered on September 3th.
+Made as a school project. Feel free to fork it :)
